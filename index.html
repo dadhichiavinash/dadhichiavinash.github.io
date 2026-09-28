@@ -306,6 +306,25 @@
             transition: all 0.3s;
         }
 
+        .record-image {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .record-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .record-card:hover .record-image img {
+            transform: scale(1.05);
+        }
+
         .record-card:hover {
             border-color: var(--gold);
             box-shadow: 0 10px 40px rgba(251, 191, 36, 0.2);
@@ -495,6 +514,32 @@
             line-height: 1.8;
         }
 
+        .linkedin-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .linkedin-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: var(--radius);
+        }
+
+        .linkedin-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .linkedin-content p {
+            margin-bottom: 1.2rem;
+        }
+
         /* Contact Section */
         .contact {
             background: var(--dark-bg);
@@ -563,23 +608,29 @@
         }
 
         .gallery-item {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
             aspect-ratio: 1;
             border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed rgba(251, 191, 36, 0.3);
-            color: var(--secondary-text);
-            font-size: 1rem;
-            text-align: center;
-            padding: 1rem;
+            overflow: hidden;
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            background: var(--card-bg);
             transition: all 0.3s;
         }
 
         .gallery-item:hover {
             border-color: var(--gold);
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         /* Responsive */
@@ -624,6 +675,10 @@
 
             section h2 {
                 font-size: 1.8rem;
+            }
+
+            .linkedin-card {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -739,11 +794,17 @@
             <h2>World Records</h2>
             <div class="records-grid">
                 <div class="record-card">
-                    <div class="record-header">
-                        <div class="record-medal">🌍</div>
-                        <h3>Fastest to Identify & Recite Flags</h3>
-                        <div class="record-date">June 30, 2025</div>
-                    </div>
+
+    <div class="record-image">
+        <img src="images/record-flags.png"
+             alt="Dadhichi Avinash world record for identifying and reciting flags of 45 countries">
+    </div>
+
+    <div class="record-header">
+        <div class="record-medal">🌍</div>
+        <h3>Fastest to Identify & Recite Flags</h3>
+        <div class="record-date">June 30, 2025</div>
+    </div>
                     <div class="record-body">
                         <div class="record-detail">
                             <span class="record-label">Achievement</span>
@@ -769,6 +830,10 @@
                 </div>
 
                 <div class="record-card">
+                    <div class="record-image">
+                        <img src="images/Period table block wise world record.png"
+                             alt="Dadhichi Avinash world record for reciting all elements of the Periodic Table block wise">
+                    </div>
                     <div class="record-header">
                         <div class="record-medal">⚛️</div>
                         <h3>Fastest Periodic Table Recitation</h3>
@@ -799,12 +864,17 @@
                 </div>
             </div>
 
-            <div class="recognition">
-                <h3>🌟 Special Recognition</h3>
-                <p>
-                    I was recognized at the <strong>AI Leadership Summit in Chennai</strong> for my exceptional abilities and future potential in innovation and technology. This honor reflects not just my achievements, but the broader recognition of young talent making an impact globally.
-                </p>
-                <a href="https://www.linkedin.com/posts/avinash-shankar1_it-is-a-proud-moment-when-my-4-year-olds-activity-7399125868293492736-tY0x" class="btn btn-primary" target="_blank">View LinkedIn Post</a>
+            <div class="recognition linkedin-card">
+                <div class="linkedin-image">
+                    <img src="images/AI summit pic.png" alt="Dadhichi Avinash recognition at the AI Leadership Summit">
+                </div>
+                <div class="linkedin-content">
+                    <h3>🌟 Special Recognition</h3>
+                    <p>
+                        I was recognized at the <strong>AI Leadership Summit in Chennai</strong> for my exceptional abilities and future potential in innovation and technology. This honor reflects not just my achievements, but the broader recognition of young talent making an impact globally.
+                    </p>
+                    <a href="https://www.linkedin.com/posts/avinash-shankar1_it-is-a-proud-moment-when-my-4-year-olds-activity-7399125868293492736-tY0x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View LinkedIn Post</a>
+                </div>
             </div>
         </div>
     </section>
@@ -836,12 +906,24 @@
         <div class="container">
             <h2>Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">📷 World Record Moment</div>
-                <div class="gallery-item">📷 Certificate & Awards</div>
-                <div class="gallery-item">📷 Practice Sessions</div>
-                <div class="gallery-item">📷 Performance Day</div>
-                <div class="gallery-item">📷 Family Moments</div>
-                <div class="gallery-item">📷 Add Your Photos</div>
+                <div class="gallery-item">
+                    <img src="images/record-flags.png" alt="Dadhichi Avinash world record achievement for identifying flags of 45 countries">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/World record medals.jpeg" alt="Dadhichi Avinash with medals for his world record achievements">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Abacus Gold topper karnata Level.jpeg" alt="Dadhichi Avinash receiving Karnataka-level Abacus Gold Topper recognition">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/AI summit pic.png" alt="Dadhichi Avinash recognized at the AI Leadership Summit">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Period table block wise world record.png" alt="Dadhichi Avinash's Periodic Table block-wise world record achievement">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/School recognition.jpeg" alt="Dadhichi Avinash receiving school recognition">
+                </div>
             </div>
         </div>
     </section>
