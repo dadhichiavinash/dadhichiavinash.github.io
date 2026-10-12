@@ -637,13 +637,140 @@
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-            transition: transform 0.4s ease;
+            background: var(--darker-bg);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .gallery-trigger {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: var(--darker-bg);
+            cursor: zoom-in;
+        }
+
+        .gallery-trigger:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: -4px;
+        }
+
+        .gallery-lightbox {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            padding: 4.5rem 5rem 3.5rem;
+            border: 0;
+            background: #101010;
+            color: var(--light-text);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .gallery-lightbox[open] {
+            display: flex;
+        }
+
+        .gallery-lightbox::backdrop {
+            background: rgba(0, 0, 0, 0.92);
+        }
+
+        .lightbox-figure {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
+            gap: 0.75rem;
+        }
+
+        .lightbox-figure img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: contain;
+        }
+
+        .lightbox-figure figcaption {
+            flex: none;
+            max-width: 100%;
+            color: var(--secondary-text);
+            text-align: center;
+        }
+
+        .lightbox-control {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border: 1px solid rgba(251, 191, 36, 0.65);
+            border-radius: 50%;
+            background: rgba(36, 36, 36, 0.95);
+            color: var(--light-text);
+            font: inherit;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .lightbox-control:hover,
+        .lightbox-control:focus-visible {
+            background: var(--gold);
+            color: var(--darker-bg);
+        }
+
+        .lightbox-close {
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .lightbox-previous {
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-lightbox {
+                padding: 4.5rem 3.5rem 3.5rem;
+            }
+
+            .lightbox-control {
+                width: 42px;
+                height: 42px;
+            }
+
+            .lightbox-close {
+                top: 0.75rem;
+                right: 0.75rem;
+            }
+
+            .lightbox-previous {
+                left: 0.5rem;
+            }
+
+            .lightbox-next {
+                right: 0.5rem;
+            }
         }
 
         /* Responsive */
@@ -919,26 +1046,68 @@
             <h2>Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/record-flags.png" alt="Dadhichi Avinash world record achievement for identifying flags of 45 countries">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash world record achievement for identifying flags of 45 countries">
+                        <img src="images/record-flags.png" alt="Dadhichi Avinash world record achievement for identifying flags of 45 countries">
+                    </button>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/World record medals.jpeg" alt="Dadhichi Avinash with medals for his world record achievements">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash with medals for his world record achievements">
+                        <img src="images/World record medals.jpeg" alt="Dadhichi Avinash with medals for his world record achievements">
+                    </button>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/Abacus Gold topper karnata Level.jpeg" alt="Dadhichi Avinash receiving Karnataka-level Abacus Gold Topper recognition">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash receiving Karnataka-level Abacus Gold Topper recognition">
+                        <img src="images/Abacus Gold topper karnata Level.jpeg" alt="Dadhichi Avinash receiving Karnataka-level Abacus Gold Topper recognition">
+                    </button>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/AI summit pic.png" alt="Dadhichi Avinash recognized at the AI Leadership Summit">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash recognized at the AI Leadership Summit">
+                        <img src="images/AI summit pic.png" alt="Dadhichi Avinash recognized at the AI Leadership Summit">
+                    </button>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/Period table block wise world record.png" alt="Dadhichi Avinash's Periodic Table block-wise world record achievement">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash's Periodic Table block-wise world record achievement">
+                        <img src="images/Period table block wise world record.png" alt="Dadhichi Avinash's Periodic Table block-wise world record achievement">
+                    </button>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/School recognition.jpeg" alt="Dadhichi Avinash receiving school recognition">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash receiving school recognition">
+                        <img src="images/School recognition.jpeg" alt="Dadhichi Avinash receiving school recognition">
+                    </button>
+                </div>
+                <div class="gallery-item">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash featured in a BTA Instagram post">
+                        <img src="images/BTA instagram post.jpeg" alt="Dadhichi Avinash featured in a BTA Instagram post">
+                    </button>
+                </div>
+                <div class="gallery-item">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash featured in the Ekya School magazine">
+                        <img src="images/Features in ekya school magazine.jpeg" alt="Dadhichi Avinash featured in the Ekya School magazine">
+                    </button>
+                </div>
+                <div class="gallery-item">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Lego spacecraft built by Dadhichi Avinash">
+                        <img src="images/lego spacecraft.jpeg" alt="Lego spacecraft built by Dadhichi Avinash">
+                    </button>
+                </div>
+                <div class="gallery-item">
+                    <button class="gallery-trigger" type="button" aria-label="View full image: Dadhichi Avinash receiving an Abacus gold topper award">
+                        <img src="images/Abacus gold topper.jpeg" alt="Dadhichi Avinash receiving an Abacus gold topper award">
+                    </button>
                 </div>
             </div>
         </div>
     </section>
+
+    <dialog class="gallery-lightbox" aria-label="Gallery image viewer">
+        <button class="lightbox-control lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+        <button class="lightbox-control lightbox-previous" type="button" aria-label="Previous image">&#8249;</button>
+        <figure class="lightbox-figure">
+            <img src="" alt="">
+            <figcaption></figcaption>
+        </figure>
+        <button class="lightbox-control lightbox-next" type="button" aria-label="Next image">&#8250;</button>
+    </dialog>
 
     <section id="contact" class="contact">
         <div class="container">
@@ -998,6 +1167,52 @@
                     link.style.color = 'var(--gold)';
                 }
             });
+        });
+
+        const galleryImages = [...document.querySelectorAll('.gallery-item img')];
+        const galleryLightbox = document.querySelector('.gallery-lightbox');
+        const lightboxImage = galleryLightbox.querySelector('img');
+        const lightboxCaption = galleryLightbox.querySelector('figcaption');
+        const lightboxClose = galleryLightbox.querySelector('.lightbox-close');
+        let activeGalleryIndex = 0;
+        let activeGalleryTrigger = null;
+
+        function showGalleryImage(index) {
+            activeGalleryIndex = (index + galleryImages.length) % galleryImages.length;
+            const image = galleryImages[activeGalleryIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCaption.textContent = image.alt;
+        }
+
+        document.querySelectorAll('.gallery-trigger').forEach((trigger, index) => {
+            trigger.addEventListener('click', () => {
+                activeGalleryTrigger = trigger;
+                showGalleryImage(index);
+                galleryLightbox.showModal();
+                lightboxClose.focus();
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => galleryLightbox.close());
+        galleryLightbox.querySelector('.lightbox-previous').addEventListener('click', () => {
+            showGalleryImage(activeGalleryIndex - 1);
+        });
+        galleryLightbox.querySelector('.lightbox-next').addEventListener('click', () => {
+            showGalleryImage(activeGalleryIndex + 1);
+        });
+        galleryLightbox.addEventListener('click', event => {
+            if (event.target === galleryLightbox) {
+                galleryLightbox.close();
+            }
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && galleryLightbox.open) {
+                galleryLightbox.close();
+            }
+        });
+        galleryLightbox.addEventListener('close', () => {
+            activeGalleryTrigger?.focus();
         });
     </script>
 </body>
